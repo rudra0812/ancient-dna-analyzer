@@ -1,0 +1,22 @@
+# Ancient DNA Sequence Analyzer
+
+A Python-based tool for analyzing and reconstructing degraded DNA sequences from extinct species.
+
+## Current Features
+- ✅ DNA sequence validation (A, T, C, G bases)
+- ✅ Error handling for invalid sequences
+
+## Planned Features
+- Fragment assembly algorithms
+- Quality scoring for degraded DNA
+- Comparison with modern genomes
+- Statistical analysis tools
+
+## Technologies
+- Python 3.x
+
+## Author
+Rudra Pratap Singh
+
+## Purpose
+Learning project to master Python and bioinformatics for future work in genetic engineering and de-extinction.
