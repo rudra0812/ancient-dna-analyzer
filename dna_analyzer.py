@@ -1,12 +1,4 @@
-# Function name: validate_dna_sequence
-# Input: A string (DNA sequence)
-# Output: True if valid, False if invalid
-
-#Rules:
-# Only A, T, C, G letters allowed (uppercase)
-# - Should handle empty strings
-#- Print helpful error message if invalid 
-
+# Function 1: DNA Validator 
 def validate_dna_sequence(dna_sequence):
 
     dna_sequence = dna_sequence.upper()
@@ -24,9 +16,55 @@ def validate_dna_sequence(dna_sequence):
     print("DNA sequence is valid.")
     return True
 
-    # Test cases
-print(validate_dna_sequence("ATCG"))        
-print(validate_dna_sequence("ATXG"))        
-print(validate_dna_sequence(""))            
-print(validate_dna_sequence("atcg"))        
-print(validate_dna_sequence("ATCG123"))
+# Function 2: DNA Statistics 
+def calculate_dna_stats(dna_sequence):
+    
+    dna_sequence = dna_sequence.upper()
+    length = len(dna_sequence)
+
+    if length == 0:
+        print("Error: DNA sequence cannot be empty.")
+        return None
+    
+    counts = {'A': 0, 'T': 0, 'C': 0, 'G': 0}
+    for base in dna_sequence:
+        if base in counts:
+            counts[base] += 1
+        else:
+            print(f"Warning: Invalid base '{base}' ignored.")
+    
+    percentages = {}
+    for base in counts:
+        percentages[base] = round((counts[base] / length) * 100, 2)
+
+    # Step 4: Calculate GC content
+    gc_content = round(((counts['G'] + counts['C']) / length) * 100, 2)
+
+    # Step 5: Return everything
+    return {
+        'length': length,
+        'counts': counts,
+        'percentages': percentages,
+        'gc_content': gc_content
+    }
+
+# Test both functions
+print("=== Testing Validator ===")
+print(validate_dna_sequence("ATCG"))
+
+print("\n=== Testing Statistics ===")
+result1 = calculate_dna_stats("ATCGATCG")
+print(result1)
+
+# Additional tests
+print("\n=== Test with unequal distribution ===")
+result2 = calculate_dna_stats("AAAGGGCCCTT")
+print(result2)
+
+print("\n=== Test with very high GC content ===")
+result3 = calculate_dna_stats("GCGCGCGC")
+print(result3)
+
+print("\n=== Test with invalid character ===")
+result4 = calculate_dna_stats("ATCGXYZ")
+print(result4)
