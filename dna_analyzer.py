@@ -37,10 +37,8 @@ def calculate_dna_stats(dna_sequence):
     for base in counts:
         percentages[base] = round((counts[base] / length) * 100, 2)
 
-    # Step 4: Calculate GC content
     gc_content = round(((counts['G'] + counts['C']) / length) * 100, 2)
 
-    # Step 5: Return everything
     return {
         'length': length,
         'counts': counts,
