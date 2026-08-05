@@ -1,0 +1,2 @@
+matplotlib
+ollama>=0.1.0
